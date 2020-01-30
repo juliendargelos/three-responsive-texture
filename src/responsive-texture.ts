@@ -1,7 +1,7 @@
 import { Texture, Vector2 } from 'three'
 
 export class ResponsiveTexture extends Texture {
-  public responsiveNeedsUpdate: boolean = true
+  public responsiveNeedsUpdate = true
   public sizing: {
     ratio: number
     repeat: number
