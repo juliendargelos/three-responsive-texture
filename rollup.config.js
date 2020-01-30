@@ -94,9 +94,8 @@ export default [
         }
       }),
       cleaner({ targets: ['demo-dist'] }),
-      nodeResolve({ extensions: ['.ts'] }),
+      nodeResolve({ extensions: ['.ts', '.js'] }),
       commonjs(),
-      eslint({ include: 'demo' }),
       html({ title: `${pkg.name} demo` }),
       production && terser(),
       development && serve('demo-dist')

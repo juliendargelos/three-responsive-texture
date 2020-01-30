@@ -1,1 +1,1 @@
-export default null
+export { ResponsiveTexture } from '~/responsive-texture'
