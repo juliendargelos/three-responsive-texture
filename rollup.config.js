@@ -20,7 +20,12 @@ const build = !demo
 
 const config = {
   input: 'src/index.ts',
-  output: { sourcemap: true },
+  output: {
+    sourcemap: true,
+    globals: {
+      three: 'THREE'
+    }
+  },
   plugins: [
     build && autoExternal(),
     alias({
