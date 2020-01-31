@@ -43,7 +43,10 @@ export class Loader {
     this.loading = true
 
     new TextureLoader().load('https://picsum.photos/1024/512', (texture) => {
+      const { wrapS, wrapT } = this.texture
       this.texture.copy(texture).updateResponsive()
+      this.texture.wrapS = wrapS
+      this.texture.wrapT = wrapT
       this.texture.needsUpdate = true
       this.loading = false
     })
