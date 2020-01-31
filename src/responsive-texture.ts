@@ -31,8 +31,6 @@ export class ResponsiveTexture extends Texture {
       .multiply(anchor)
       .multiplyScalar(-1)
       .add(anchor)
-
-    this.needsUpdate = true
   }
 
   public update(): void {
