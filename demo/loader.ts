@@ -43,9 +43,8 @@ export class Loader {
     this.loading = true
 
     new TextureLoader().load('https://picsum.photos/1024/512', (texture) => {
-      this.texture.copy(texture)
+      this.texture.copy(texture).updateResponsive()
       this.texture.needsUpdate = true
-      this.texture.responsiveNeedsUpdate = true
       this.loading = false
     })
   }

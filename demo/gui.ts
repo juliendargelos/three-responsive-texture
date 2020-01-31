@@ -24,23 +24,23 @@ export class GUI extends BaseGUI {
     this.domElement.style.position = 'absolute'
 
     const texture: ResponsiveTexture = loader.texture
-    const updateResponsive = () => { texture.responsiveNeedsUpdate = true }
+    const updateResponsive = texture.updateResponsive.bind(texture)
 
     this.add(size, 'x', 0.1, 7)
     this.add(size, 'y', 0.1, 7)
 
-    this.add(texture.sizing, 'repeat', 0.1, 5)
+    this.add(texture.responsive, 'repeat', 0.1, 5)
       .onChange(updateResponsive)
 
-    this.add(texture.sizing.anchor, 'x', 0, 1, 0.001)
+    this.add(texture.responsive.anchor, 'x', 0, 1, 0.001)
       .name('anchor x')
       .onChange(updateResponsive)
 
-    this.add(texture.sizing.anchor, 'y', 0, 1, 0.001)
+    this.add(texture.responsive.anchor, 'y', 0, 1, 0.001)
       .name('anchor y')
       .onChange(updateResponsive)
 
-    this.add(texture.sizing, 'strategy', ['fill', 'fit'])
+    this.add(texture.responsive, 'strategy', ['fill', 'fit'])
       .onChange(updateResponsive)
 
     this.add({ wrapS: texture.wrapS }, 'wrapS', wrapping).onChange((wrapS) => {
@@ -58,9 +58,9 @@ export class GUI extends BaseGUI {
     this.add({
       reset: () => {
         size.set(1, 1)
-        texture.sizing.repeat = 1
-        texture.sizing.anchor.set(0.5, 0.5)
-        texture.sizing.strategy = 'fill'
+        texture.responsive.repeat = 1
+        texture.responsive.anchor.set(0.5, 0.5)
+        texture.responsive.strategy = 'fill'
         texture.wrapT = texture.wrapS = ClampToEdgeWrapping
         this.__controllers.forEach(controller => controller.updateDisplay())
         texture.needsUpdate = true

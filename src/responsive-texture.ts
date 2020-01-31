@@ -1,8 +1,7 @@
 import { Texture, Vector2 } from 'three'
 
 export class ResponsiveTexture extends Texture {
-  public responsiveNeedsUpdate = true
-  public sizing: {
+  public responsive: {
     ratio: number
     repeat: number
     anchor: Vector2
@@ -15,7 +14,9 @@ export class ResponsiveTexture extends Texture {
   }
 
   public updateResponsive(): void {
-    const { ratio, strategy, repeat, anchor } = this.sizing
+    if (!this.image) return
+
+    const { ratio, strategy, repeat, anchor } = this.responsive
     const textureRatio = this.image instanceof HTMLVideoElement
       ? this.image.videoWidth / this.image.videoHeight
       : this.image.width / this.image.height
@@ -31,11 +32,5 @@ export class ResponsiveTexture extends Texture {
       .multiply(anchor)
       .multiplyScalar(-1)
       .add(anchor)
-  }
-
-  public update(): void {
-    if (!this.responsiveNeedsUpdate || !this.image) return
-    this.responsiveNeedsUpdate = false
-    this.updateResponsive()
   }
 }

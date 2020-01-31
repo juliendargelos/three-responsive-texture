@@ -59,11 +59,9 @@ function update(delta: number, time: number): void {
     if (Math.abs(size.x - plane.scale.x) < 0.001) plane.scale.x = size.x
     if (Math.abs(size.y - plane.scale.y) < 0.001) plane.scale.y = size.y
 
-    responsiveTexture.sizing.ratio = plane.scale.x / plane.scale.y
-    responsiveTexture.responsiveNeedsUpdate = true
+    responsiveTexture.responsive.ratio = plane.scale.x / plane.scale.y
+    responsiveTexture.updateResponsive()
   }
-
-  responsiveTexture.update()
 }
 
 /* RESIZE */
