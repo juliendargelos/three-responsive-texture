@@ -1,6 +1,6 @@
 {
   "name": "three-responsive-texture",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Texture that preserve aspect ratio",
   "author": "Julien Dargelos <contact@juliendargelos.com>",
   "license": "MIT",
