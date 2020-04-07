@@ -56,7 +56,6 @@ export class ResponsiveTextureLoader extends TextureLoader {
       )
 
       texture.format = isJPEG ? RGBFormat : RGBAFormat
-      texture.responsive.ratio = image.width / image.height
       texture.updateResponsive()
       texture.needsUpdate = true
 
